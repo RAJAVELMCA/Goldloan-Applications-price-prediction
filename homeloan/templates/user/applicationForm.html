@@ -1,0 +1,223 @@
+{% extends 'userNavbar.html' %}
+{% block main  %}
+{% load static %}
+
+<section class="wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 class="page-header"><i class="fa fa-files-o"></i> Application Form</h3>
+            <ol class="breadcrumb">
+                <li><i class="fa fa-home"></i><a href="/userDashboard">Home</a></li>
+                <li><i class="icon_document_alt"></i>Application</li>
+                <li><i class="fa fa-files-o"></i>Application Form</li>
+            </ol>
+        </div>
+    </div>
+    <!-- Form validations -->
+    <div class="row">
+        <div class="col-lg-12">
+            <section class="panel">
+                <header class="panel-heading">
+                    Application Form
+                </header>
+                <div class="panel-body">
+                    <div class="form">
+                        <form class="form-validate form-horizontal" id="feedback_form" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group ">
+                                <label class="control-label col-lg-2">First Name <span
+                                        class="required">*</span></label>
+                                <div class="col-lg-10">
+                                    <input type="text" name="firstName" value="{{signup.user.first_name}}" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group ">
+                                <label class="control-label col-lg-2">Last Name <span
+                                        class="required">*</span></label>
+                                <div class="col-lg-10">
+                                    <input type="text" name="lastName" value="{{signup.user.last_name}}" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group ">
+                                <label class="control-label col-lg-2">Contact Number<span
+                                        class="required">*</span></label>
+                                <div class="col-lg-10">
+                                    <input type="text" name="MobileNumber" value="{{signup.MobileNumber}}" class="form-control" maxlength="10" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group ">
+                                <label class="control-label col-lg-2">PAN Number <span
+                                        class="required">*</span></label>
+                                <div class="col-lg-10">
+                                    <input type="text" name="PanNumber" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group ">
+                                <label class="control-label col-lg-2">Upload Pan Card <span
+                                        class="required">*</span></label>
+                                <div class="col-lg-10">
+                                    <input type="file" name="PanCardCopy" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group ">
+                                <label class="control-label col-lg-2">Address <span
+                                        class="required">*</span></label>
+                                <div class="col-lg-10">
+                                    <textarea name="Address" class="form-control" required></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group ">
+                                <label class="control-label col-lg-2">Address Proof <span
+                                        class="required">*</span></label>
+                                <div class="col-lg-10">
+                                    <select name="AddressProofType" class="form-control" required>
+                                        <option value="">Select Address Proof</option>
+                                        <option value="Aadhar Card">Aadhar Card</option>
+                                        <option value="Driving Licence">Driving Licence</option>
+                                        <option value="Passport">Passport</option>
+                                        <option value="Voter ID">Voter ID</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group ">
+                                <label class="control-label col-lg-2">Upload Address Proof<span
+                                        class="required">*</span></label>
+                                <div class="col-lg-10">
+                                    <input type="file" name="AddressDoc" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group ">
+                                <label class="control-label col-lg-2">Service Type Any<span
+                                        class="required">*</span></label>
+                                <div class="col-lg-10">
+                                    <input type="text" name="ServiceType" class="form-control" placeholder="Any Service type(Govt/Private/bussiness)" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group ">
+                                <label class="control-label col-lg-2">Monthly Income<span
+                                        class="required">*</span></label>
+                                <div class="col-lg-10">
+                                    <input type="text" name="MontlyIncome" class="form-control" placeholder="Monthly Income" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group ">
+                                <label class="control-label col-lg-2">Existing Loan<span
+                                        class="required">*</span></label>
+                                <div class="col-lg-10">
+                                    <select name="ExistingLoan" class="form-control" required>
+                                        <option value="">Select Any</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group ">
+                                <label class="control-label col-lg-2">Expected Loan Amount<span
+                                        class="required">*</span></label>
+                                <div class="col-lg-10">
+                                    <input type="text" name="ExpectedLoanAmount" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group ">
+                                <label class="control-label col-lg-2">Profile Photo<span
+                                        class="required">*</span></label>
+                                <div class="col-lg-10">
+                                    <input type="file" name="ProfilePic" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group ">
+                                <label class="control-label col-lg-2">Tenure <span
+                                        class="required">*</span></label>
+                                <div class="col-lg-10">
+                                    <select name="Tenure" class="form-control" required>
+                                        <option value="">Choose Any</option>
+                                        <option value="10 yrs">10 yrs</option>
+                                        <option value="12 yrs">12 yrs</option>
+                                        <option value="14 yrs">14 yrs</option>
+                                        <option value="15 yrs">15 yrs</option>
+                                        <option value="16 yrs">16 yrs</option>
+                                        <option value="18 yrs">18 yrs</option>
+                                        <option value="20 yrs">20 yrs</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <header class="panel-heading">
+                                Guarantor Details
+                            </header>
+                            <br>
+                            <div class="form-group">
+                                <label class="control-label col-lg-2">Guarantor Name <span
+                                        class="required">*</span></label>
+                                <div class="col-lg-10">
+                                    <input type="text" name="GName" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-2">Guarantor Mobile Number <span
+                                        class="required">*</span></label>
+                                <div class="col-lg-10">
+                                    <input type="text" name="Gmobnum" class="form-control" maxlength="10" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-2">Guarantor Email <span
+                                        class="required">*</span></label>
+                                <div class="col-lg-10">
+                                    <input type="text" name="Gemail" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-2">Guarantor Address <span
+                                        class="required">*</span></label>
+                                <div class="col-lg-10">
+                                    <textarea name="Gaddress" class="form-control" required></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-lg-offset-2 col-lg-10">
+                                    <button class="btn btn-primary" type="submit">Submit</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
+
+{% if error == "no" %}
+
+<script>
+    alert('Your Application has been Submitted. Your Application Number is {{applicationNo}}');
+    window.location=('{% url 'applicationHistory' %}');
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert('Something Went Wrong. Please try again');
+</script>
+{% endif %}
+
+{% endblock %}

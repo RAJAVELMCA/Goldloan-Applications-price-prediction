@@ -1,0 +1,59 @@
+{% extends "nav.html" %}
+
+{% block content %}
+{% load static %}
+
+
+<br><br><br><br><br><br><br><br><br><br>
+<div class="login-wrapper">
+    <form method="post" class="form">
+        {% csrf_token %}
+      <img src="{% static 'img/avatar.png' %}" alt="">
+      <h2>Registration Page</h2>
+
+      <div class="input-group">
+        <input type="text" name="firstName" required>
+        <label>First Name</label>
+      </div>
+
+      <div class="input-group">
+        <input type="text" name="lastName" required>
+        <label>Last Name</label>
+      </div>
+
+      <div class="input-group">
+        <input type="number" name="MobileNumber" maxlength="10" required>
+        <label>Mobile Number</label>
+      </div>
+
+      <div class="input-group">
+        <input type="email" name="emailid" required>
+        <label>Email Id</label>
+      </div>
+
+      <div class="input-group">
+        <input type="password" name="password" required>
+        <label>Password</label>
+      </div>
+
+      <input type="submit" value="Submit" class="submit-btn">
+      <a href="{% url 'home' %}" class="forgot-pw">Back to Home</a>
+    </form>
+  </div>
+
+{% if error == "no" %}
+<script>
+    alert('Registration Successfully');
+    window.location=('{% url 'userlogin' %}');
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert('Something went wrong. Try Again...');
+</script>
+{% endif %}
+
+{% include "footer.html" %}
+
+{% endblock %}

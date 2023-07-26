@@ -1,0 +1,37 @@
+{% extends 'userNavbar.html' %}
+{% block main  %}
+{% load static %}
+<style>
+    .main{
+        width: 100%;
+      background:url({% static 'images/about_info.jpg' %});
+      background-size: 100% 100%;
+      background-position: center;
+      
+      height: 100%;
+      text-align: center;
+      font-size: 20px;
+      color: black;
+    }
+  
+    .username{
+        color: antiquewhite;
+        text-align: center;
+        font-size: 50px;
+        
+    }
+    .theme_color{
+        color: rgb(255, 102, 0);
+        font-size: 50px;
+    }
+</style>
+<div class="main">
+    
+    <br><br><br><br><br><br><br><br><br>
+    
+    <span class="username" style="text-transform:uppercase;">Hi &nbsp; {{request.user.first_name}}  {{request.user.last_name}}</span><br>
+    <span class="theme_color">Welcome to GoldLoan</span>
+
+</div>
+
+{% endblock %}

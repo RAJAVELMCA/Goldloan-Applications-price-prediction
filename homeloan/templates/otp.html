@@ -1,0 +1,46 @@
+{% load static %}
+
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="{% static 'css1/loginstyle.css' %}">
+  <title>otp form </title>
+</head>
+<body>
+
+
+  <div class="login-wrapper">
+    <form method="post" class="form">
+        {% csrf_token %}
+      <img src="{% static 'img/avatar.png' %}" alt="">
+      <h2>OTP HERE</h2>
+     
+      <div class="input-group">
+        <input type="text" id="otp-field" name="otp" autocomplete="off" autofocus>
+        <label for="otp" id="otp-label">Enter your otp</label>
+      </div>
+      <input type="submit" value="Verify" class="submit-btn" >
+      <p>Didn't get the code ?</p>
+      <a href="{% url 'signup' %}" class="forgot-pw">Resend</a>
+    </form>
+  </div>
+
+  {% if error == "no" %}
+  <script>
+      alert('OTP Verified Successfully');
+      window.location=('{% url 'dashboard' %}');
+  </script>
+  {% endif %}
+  
+  {% if error == "yes" %}
+  <script>
+      alert('Something went wrong. Try Again...');
+  </script>
+  {% endif %}
+  
+
+</body>
+</html>

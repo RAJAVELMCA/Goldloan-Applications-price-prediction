@@ -1,0 +1,46 @@
+
+{% extends "nav.html" %}
+
+{% block content %}
+{% load static %}
+
+
+<br><br><br><br><br>
+
+  <div class="login-wrapper">
+    <form method="post" class="form">
+        {% csrf_token %}
+      <img src="{% static 'img/avatar.png' %}" alt="">
+      <h2>User Login</h2>
+      <div class="input-group">
+        <input type="email" name="email" required>
+        <label>Email ID</label>
+      </div>
+      <div class="input-group">
+        <input type="password" name="password" required>
+        <label>Password</label>
+      </div>
+      <input type="submit" value="Login" class="submit-btn">
+      <a href="{% url 'signup' %}" class="forgot-pw">Click Here for Signup</a>
+    </form>
+  </div>
+
+{% if error == "no" %}
+<script>
+    alert('Logged In Successfully');
+    window.location=('{% url 'userDashboard' %}');
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert('Something went wrong. Try Again...');
+</script>
+{% endif %}
+
+
+
+{% include "footer.html" %}
+
+
+{% endblock %}

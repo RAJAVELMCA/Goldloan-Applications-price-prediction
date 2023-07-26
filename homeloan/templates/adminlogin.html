@@ -1,0 +1,52 @@
+{% extends "nav.html" %}
+
+{% block content %}
+{% load static %}
+<br><br><br><br><br>
+<a href="{% url 'index' %}" style = "position : absolute ; left : 10px ; top : 10px ; text-decoration : none ; color : red">Go Back To HomePage</a>
+  <div class="login-wrapper">
+    <form method="post" class="form">
+        {% csrf_token %}
+      <img src="{% static 'img/avatar.png' %}" alt="">
+      <h2>Admin Login</h2>
+      <div class="input-group">
+        <input type="text" name="uname" id="uname" required>
+        <label for="uname">Username</label>
+      </div>
+      <div class="input-group">
+        <input type="password" name="pwd" id="pwd" required>
+        <label for="pwd">Password</label>
+      </div>
+      <input type="submit" value="Login" class="submit-btn">
+      <a href="{% url 'home' %}" class="forgot-pw">Back to Home</a>
+    </form>
+
+    <div id="forgot-pw">
+      <form action="" class="form">
+        <a href="#" class="close">&times;</a>
+        <h2>Reset Password</h2>
+        <div class="input-group">
+          <input type="email" name="email" id="email" required>
+          <label for="email">Email</label>
+        </div>
+        <input type="submit" value="Submit" class="submit-btn">
+      </form>
+    </div>
+  </div>
+
+{% if error == "no" %}
+<script>
+    alert('Logged In Successfully');
+    window.location=('{% url 'dashboard' %}');
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert('Something went wrong. Try Again...');
+</script>
+{% endif %}
+
+{% include "footer.html" %}
+
+{% endblock %}
